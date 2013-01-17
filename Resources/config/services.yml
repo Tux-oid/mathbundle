@@ -1,0 +1,4 @@
+services:
+    rl_math.math:
+        class: RL\MathBundle\Math
+        arguments: [ %rl_math.php_math_publisher.formulas_target_path% ]

@@ -1,0 +1,23 @@
+{
+    "name":         "rl/mathbundle",
+    "description":  "Symfony 2 wrapper for RL\\PhpMathPublisher and latex",
+    "type":         "symfony-bundle",
+    "keywords":     ["math", "math bundle", "mathematics"],
+    "license":      "BSDL",
+    "homepage":     "https://gitorious.org/rulinux-engine/mathbundle",
+    "authors":      [
+        {
+            "name":     "Peter Vasilevsky a.k.a. Tux-oid.",
+            "homepage": "http://rulinux.net"
+        }
+    ],
+    "autoload":     {
+        "psr-0": { "RL\\MathBundle": "" }
+    },
+    "target-dir": "RL/MathBundle",
+    "require":{
+        "php":">=5.3.3",
+        "symfony/symfony":"2.1.*",
+        "rl/phpmathpublisher":"*"
+    }
+}
