@@ -29,6 +29,7 @@
 namespace RL\MathBundle;
 
 use RL\PhpMathPublisher\PhpMathPublisher;
+use RL\MathBundle\Model\Latex;
 
 /**
  * RL\MathBundle\Math
@@ -49,11 +50,26 @@ class Math
     protected $mathPublisher;
 
     /**
-     * Constructor
+     * @var bool
      */
-    public function __construct($path)
+    protected $useLatex;
+
+    /**
+     * @var \RL\MathBundle\Model\Latex
+     */
+    protected $latex;
+
+    /**
+     * Constructor
+     *
+     * @param string $path
+     * @param bool $useLatex
+     */
+    public function __construct($path, $useLatex, Latex $latex)
     {
         $this->mathPublisher = new PhpMathPublisher($path);
+        $this->useLatex = $useLatex;
+        $this->latex = $latex;
     }
 
     /**
@@ -61,10 +77,14 @@ class Math
      */
     public function render($formula = null)
     {
-        if(null === $formula) {
+        if (null === $formula) {
             $formula = $this->formula;
         }
-
+        if ($this->useLatex) {
+            if ($this->latex->isAvailable()) {
+                return $this->latex->makeImage($formula);
+            }
+        }
         return $this->mathPublisher->mathFilter('<m>' . trim($formula) . '</m>');
     }
 

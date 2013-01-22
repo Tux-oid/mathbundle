@@ -1,4 +1,7 @@
 services:
+    rl_math.latex:
+            class: RL\MathBundle\Model\Latex
+            arguments: [ %rl_math.formulas_target_path%, %rl_math.formulas_target_path%, %rl_math.temporary_dir_path%, @logger ]
     rl_math.math:
-        class: RL\MathBundle\Math
-        arguments: [ %rl_math.php_math_publisher.formulas_target_path% ]
+            class: RL\MathBundle\Math
+            arguments: [ %rl_math.formulas_target_path%, %rl_math.use_latex%, @rl_math.latex ]

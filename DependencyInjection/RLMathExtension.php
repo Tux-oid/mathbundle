@@ -26,6 +26,7 @@ class RLMathExtension extends Extension
         $loader->load('services.yml');
 
         $container->setParameter($this->getAlias() . '.use_latex', $config['use_latex']);
-        $container->setParameter($this->getAlias() . '.php_math_publisher.formulas_target_path', $config['php_math_publisher']['formulas_target_path']);
+        $container->setParameter($this->getAlias() . '.formulas_target_path', $config['formulas_target_path']);
+        $container->setParameter($this->getAlias() . '.temporary_dir_path', $config['temporary_dir_path']);
     }
 }
